@@ -1,4 +1,4 @@
-package com.twu.perfect.pixels.springsession;
+package com.twu.spring.framework.session;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
