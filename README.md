@@ -25,20 +25,3 @@
 ```
 ./gradlew test
 ```
-
-### Use the mob-session script
-
-##### To start a mob session
-```
-mob-session.sh --start
-```
-
-##### To receive the handover branch
-```
-mob-session.sh --receive
-```
-
-##### To push the handover branch
-```
-mob-session.sh --pass
-```
