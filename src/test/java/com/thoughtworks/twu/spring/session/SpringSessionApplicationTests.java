@@ -1,4 +1,4 @@
-package com.twu.spring.framework.session;
+package com.thoughtworks.twu.spring.session;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
