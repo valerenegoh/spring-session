@@ -1,4 +1,4 @@
-package com.thoughtworks.twu.spring.session.models;
+package com.thoughtworks.twu.spring.session.controllers.dto;
 
 public class TeamMemberRequest {
     public String firstName;

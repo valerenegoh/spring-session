@@ -1,7 +1,7 @@
 package com.thoughtworks.twu.spring.session.controllers;
 
 import com.thoughtworks.twu.spring.session.models.TeamMember;
-import com.thoughtworks.twu.spring.session.models.TeamMemberRequest;
+import com.thoughtworks.twu.spring.session.controllers.dto.TeamMemberRequest;
 import com.thoughtworks.twu.spring.session.services.TeamMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
