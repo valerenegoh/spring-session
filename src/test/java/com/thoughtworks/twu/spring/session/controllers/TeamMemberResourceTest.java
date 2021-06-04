@@ -8,9 +8,11 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 
 import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest
@@ -40,4 +42,10 @@ public class TeamMemberResourceTest {
         verify(teamMemberService).save(teamMember);
     }
 
+    @Test
+    public void shouldReturn200WhenTeamMemberResourceIsRequested() throws Exception {
+        mockMvc.perform(get("/team-members")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
 }
