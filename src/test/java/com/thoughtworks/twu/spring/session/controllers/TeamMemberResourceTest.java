@@ -10,9 +10,15 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest
@@ -44,10 +50,23 @@ public class TeamMemberResourceTest {
     }
 
     @Test
-    public void shouldReturn200WhenTeamMemberResourceIsRequested() throws Exception {
+    public void shouldReturn200WhenTeamMembersResourceIsRequested() throws Exception {
+        String firstName = "Rebecca";
+        String lastName = "Parsons";
+        String role = "Developer";
+
+        TeamMember teamMember = new TeamMember(firstName, lastName, role);
+        Set<TeamMember> expectedTeamMembers = new HashSet<>();
+        expectedTeamMembers.add(teamMember);
+
+        when(teamMemberService.getTeamMembers()).thenReturn(expectedTeamMembers);
 
         mockMvc.perform(get("/team-members")
                 .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.teamMembers", hasSize(1)))
+                .andExpect(jsonPath("$.teamMembers[0].firstName").value(firstName))
+                .andExpect(jsonPath("$.teamMembers[0].lastName").value(lastName))
+                .andExpect(jsonPath("$.teamMembers[0].role").value(role));
     }
 }
