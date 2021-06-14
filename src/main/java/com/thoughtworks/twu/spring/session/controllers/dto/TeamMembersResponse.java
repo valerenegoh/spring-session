@@ -14,8 +14,4 @@ public class TeamMembersResponse {
     public Set<TeamMember> getTeamMembers() {
         return teamMembers;
     }
-
-    public void setTeamMembers(Set<TeamMember> teamMembers) {
-        this.teamMembers = teamMembers;
-    }
 }
